@@ -1,10 +1,10 @@
 "use server";
 
 import connectDB from "@/config/database";
-import Message from "@/models/Property";
+import Message from "@/models/Message";
 import { getSessionUser } from "@/utils/getSessionUser";
 
-export default async function addMessage(formData) {
+export default async function addMessage(previousState, formData) {
   await connectDB();
   const sessionUser = await getSessionUser();
 
@@ -15,15 +15,15 @@ export default async function addMessage(formData) {
   const { userId } = sessionUser;
   const receiver = formData.get("receiver");
 
-  if (userId == receiver) {
-    throw new Error("Cannot send message to yourself");
-  }
+  // if (userId == receiver) {
+  //   throw new Error("Cannot send message to yourself");
+  // }
 
   const newMessage = new Message({
     sender: userId,
     receiver: receiver,
     property: formData.get("property"),
-    content: formData.get("content"),
+    body: formData.get("body"),
     name: formData.get("name"),
     email: formData.get("email"),
     phone: formData.get("phone"),
