@@ -84,6 +84,7 @@ const Navbar = () => {
                       ? "bg-black"
                       : "hover:bg-gray-900 hover:text-white"
                   }`}
+                  onClick={() => setIsProfileOpen(false)}
                 >
                   Home
                 </Link>
@@ -94,6 +95,7 @@ const Navbar = () => {
                       ? "bg-black"
                       : "hover:bg-gray-900 hover:text-white"
                   }`}
+                  onClick={() => setIsProfileOpen(false)}
                 >
                   Properties
                 </Link>
@@ -105,6 +107,7 @@ const Navbar = () => {
                         ? "bg-black"
                         : "hover:bg-gray-900 hover:text-white"
                     }`}
+                    onClick={() => setIsProfileOpen(false)}
                   >
                     Add Property
                   </Link>
@@ -204,6 +207,7 @@ const Navbar = () => {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
+                      onClick={() => setIsProfileOpen(false)}
                     >
                       Your Profile
                     </Link>
@@ -245,6 +249,7 @@ const Navbar = () => {
               className={`text-white rounded-md px-3 py-2 text-base font-medium ${
                 pathname === "/" ? "bg-black" : ""
               }`}
+              onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
@@ -253,6 +258,7 @@ const Navbar = () => {
               className={`text-white rounded-md px-3 py-2 text-base font-medium ${
                 pathname === "/properties" ? "bg-black" : ""
               }`}
+              onClick={() => setIsMenuOpen(false)}
             >
               Properties
             </Link>
@@ -262,6 +268,7 @@ const Navbar = () => {
                 className={`text-white rounded-md px-3 py-2 text-base font-medium ${
                   pathname === "/properties/add" ? "bg-black" : ""
                 }`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 Add Property
               </Link>
