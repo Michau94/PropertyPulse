@@ -1,10 +1,18 @@
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import PropertyCard from "@/components/PropertyCard";
+import Pagination from "@/components/Pagination";
 
-export default async function PropertiesPage() {
+export default async function PropertiesPage({ searchParams }) {
+  const { page = 1, pageSize = 9 } = await searchParams;
   await connectDB();
-  const properties = await Property.find({}).lean();
+
+  const skip = (page - 1) * pageSize;
+
+  const total = await Property.countDocuments({});
+  const properties = await Property.find({}).skip(skip).limit(pageSize);
+
+  const showPagination = total > pageSize;
 
   return (
     <section className="px-4 py-6">
@@ -17,6 +25,14 @@ export default async function PropertiesPage() {
               <PropertyCard key={property._id} property={property} />
             ))}
           </div>
+        )}
+
+        {showPagination && (
+          <Pagination
+            page={parseInt(page)}
+            pageSize={parseInt(pageSize)}
+            totalItems={total}
+          ></Pagination>
         )}
       </div>
     </section>
