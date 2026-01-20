@@ -10,13 +10,33 @@ import bookmarkProperty from "@/app/actions/bookmarkProperty";
 export default function BookmarkButton({ property }) {
   const { data: session } = useSession();
   const userId = session?.user?.id;
-
-  const [isBookmarked, setIsBookmarked] = useState(true);
+  const [isBookmarked, setIsBookmarked] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
+
+    checkBookmarkStatus(property._id).then((res) => {
+      if (res.error) {
+        toast.error(res.error);
+        setLoading(false);
+        return;
+      }
+      setIsBookmarked(res.isBookmarked);
+      setLoading(false);
+    });
+  }, [property._id, userId]);
+
+  // Early return after all hooks
   if (!userId) {
-    toast.error("You need to be logged in to bookmark a property");
-    return;
+    return (
+      <p className="text-center text-gray-500">
+        Please log in to bookmark properties
+      </p>
+    );
   }
 
   function handleClick() {
@@ -28,21 +48,6 @@ export default function BookmarkButton({ property }) {
       toast.success(res.message);
     });
   }
-
-  useEffect(() => {
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
-
-    checkBookmarkStatus(property._id).then((res) => {
-      if (res.error) {
-        return toast.error(res.error);
-      }
-      setIsBookmarked(res.isBookmarked);
-      setLoading(false);
-    });
-  }, [property._id, userId, checkBookmarkStatus]);
 
   if (loading) {
     return <p className="text-center">Loading...</p>;

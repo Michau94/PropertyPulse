@@ -7,7 +7,7 @@ import {
 } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import PropertyImages from "./PropertyImages";
-import PropertyMap from "./PropertyMap";
+// import PropertyMap from "./PropertyMap";
 
 export default function PropertyInfos({ property }) {
   return (
