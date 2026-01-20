@@ -30,7 +30,7 @@ async function deleteProperty(propertyId) {
 
   // gather ids
 
-  console.log("Property images:", property.images);
+  // console.log("Property images:", property.images);
 
   const publicIDs = property.images.map((img) => {
     const parts = img.split("/");

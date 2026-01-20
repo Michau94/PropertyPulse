@@ -12,7 +12,7 @@ import UnreadMessageCount from "./UnreadMessageCount";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  console.log("Session data:", session);
+  // console.log("Session data:", session);
   const profileImage = session?.user?.image;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
     const setAuthProviders = async () => {
       const res = await getProviders();
       setProviders(res);
-      console.log("Auth Providers:", res);
+      // console.log("Auth Providers:", res);
     };
 
     setAuthProviders();

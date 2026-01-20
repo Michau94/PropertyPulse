@@ -12,9 +12,9 @@ const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
     connected = true;
-    console.log("MongoDB connected");
+    // console.log("MongoDB connected");
   } catch (err) {
-    console.log("MongoDB connection error", err);
+    // console.log("MongoDB connection error", err);
   }
 };
 

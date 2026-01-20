@@ -25,7 +25,7 @@ export default function PropertyMap({ property }) {
     const fetchCords = async () => {
       try {
         const response = await fromAddress(
-          `${property.location.street}, ${property.location.state} ${property.location.zipcode}`
+          `${property.location.street}, ${property.location.state} ${property.location.zipcode}`,
         );
         const { lat, lng } = response.results[0].geometry.location;
 
@@ -34,7 +34,7 @@ export default function PropertyMap({ property }) {
           return;
         }
 
-        console.log(lat, lng);
+        // console.log(lat, lng);
 
         setLat(lat);
         setLng(lng);
@@ -44,7 +44,7 @@ export default function PropertyMap({ property }) {
           longitude: lng,
         }));
       } catch (err) {
-        console.log("Geocode error: ", err);
+        // console.log("Geocode error: ", err);
         setGeocodeError(true);
       } finally {
         setLoading(false);

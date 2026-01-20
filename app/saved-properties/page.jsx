@@ -7,7 +7,7 @@ export default async function SavedPropertiesPage() {
 
   const user = await User.findById(userId).populate("bookmarks");
 
-  console.log("User bookmarks:", user.bookmarks);
+  // console.log("User bookmarks:", user.bookmarks);
 
   return (
     <section className=" my-6 px-4">

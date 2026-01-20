@@ -11,17 +11,17 @@ import { convertToObject } from "@/utils/converttoObject";
 async function fetchUserProperties(userId) {
   await connectDB();
   const properties = await Property.find({ owner: userId }).lean();
-  console.log("User properties:", properties);
+  // console.log("User properties:", properties);
 
   const convertedProperties = properties.map(convertToObject);
-  console.log("Converted properties:", convertedProperties);
+  // console.log("Converted properties:", convertedProperties);
 
   return convertedProperties;
 }
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
-  console.log("User session:", session);
+  // console.log("User session:", session);
 
   const sessionUser = await getSessionUser();
   const { userId } = sessionUser;

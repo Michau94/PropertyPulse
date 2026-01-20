@@ -32,7 +32,7 @@ export default async function SearchResultsPage({ searchParams }) {
   const propertiesQueryResults = await Property.find(query).lean();
   const properties = convertToObject(propertiesQueryResults);
 
-  console.log(propertiesQueryResults);
+  // console.log(propertiesQueryResults);
 
   return (
     <>

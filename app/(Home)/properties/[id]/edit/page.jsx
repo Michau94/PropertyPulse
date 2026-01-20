@@ -6,10 +6,10 @@ import { convertToObject } from "@/utils/converttoObject";
 export default async function PropertyEditPage({ params }) {
   await connectDB();
 
-  console.log("Params received:", params);
+  // console.log("Params received:", params);
   const { id } = await params;
 
-  console.log("Editing property with ID:", id);
+  // console.log("Editing property with ID:", id);
 
   const propertyDoc = await Property.findById(id).lean();
   const property = convertToObject(propertyDoc);

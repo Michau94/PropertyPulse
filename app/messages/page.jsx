@@ -33,7 +33,7 @@ export default async function MessagesPage() {
     const message = convertToObject(msg);
     message.sender = convertToObject(msg.sender);
     message.property = convertToObject(msg.property);
-    console.log(message);
+    // console.log(message);
 
     return message;
   });
