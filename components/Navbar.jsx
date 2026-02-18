@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/images/logo-white.png";
@@ -126,7 +126,10 @@ const Navbar = () => {
                     <button
                       className="flex items-center cursor-pointer"
                       key={index}
-                      onClick={() => signIn(provider.id)}
+                      // onClick={() => signIn(provider.id)}
+                      onClick={() => {
+                        redirect("/not-found");
+                      }}
                     >
                       <FaGoogle className=" text-white mr-2" />
                       <span>Login or Register</span>
